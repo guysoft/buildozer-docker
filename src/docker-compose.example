@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  buildozer:
+    privileged: true
+    image: guysoft/buildozer
+    # For development uncomment this and comment the image name above
+    #build: .
+    container_name: buildozer
+    tty: true
+    entrypoint: /bin/sh
+    volumes:
+      - ./:/buildozer/
+      - root_buildozer:/root/.buildozer
+      # - ../python-for-android:/p4a
+      - /dev/bus/usb:/dev/bus/usb 
+      - /tmp/.X11-unix:/tmp/.X11-unix
+
+
+volumes:
+  root_buildozer:
